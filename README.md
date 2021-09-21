@@ -38,6 +38,7 @@ Lab Days are all about playing, learning and sharing - at speed. With that in mi
 
 * Aim to have _something_ to show at the end of the day ; a live demo, a recording, or a slide deck on how your grand lofty ideas went horribly wrong and what you would do next time to avoid them - _anything_ is incredibly useful for yourself and others.
 
+
 ### After
 
 It's presentation time! Lab Days are only half-effective if you don't share the knowledge - so:
