@@ -27,3 +27,7 @@ examples/asg-service-dynamic/bin
 # versions.
 .terraform.lock.hcl
 
+# environment files
+.env
+*.env*
+*/.env
