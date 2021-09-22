@@ -48,7 +48,6 @@ Then, browse to:
 * Prometheus: http://localhost:9090
 * Grafana: http://localhost:3000. admin/admin is the username/password if prompted.
 * Alertmanager: http://localhost:9093/
-* Postgres (TimescaleDB): `postgres://postgres:password@db:5432/postgres?sslmode=allow`
 
 
 To view logs in realtime:
