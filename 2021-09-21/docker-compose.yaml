@@ -29,3 +29,14 @@ services:
       - "3000:3000"
     volumes:
       - ${PWD}/volumes/grafana/:/var/lib/grafana/
+
+  yace:
+    image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.30.1-alpha
+    volumes:
+      - ${PWD}/volumes/yace/config.yml:/tmp/config.yml
+    command: ["--config.file=/tmp/config.yml", "--scraping-interval=60", "--decoupled-scraping=true", "--debug=true"]
+    env_file: .env
+    ports:
+      - "5000:5000"
+
+      

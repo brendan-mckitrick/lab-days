@@ -1,0 +1,49 @@
+apiVersion: v1alpha1
+discovery:
+  exportedTagsOnMetrics:
+    ec2:
+      - service
+  jobs:
+    - type: ec2
+      regions:
+        - eu-west-1
+      searchTags:
+        - key: os
+          value: windows
+      metrics:
+        - name: LogicalDisk % Free Space
+          statistics:
+            - Maximum
+          period: 600
+          length: 120
+        - name: CPUUtilization
+          statistics:
+            - Average
+          period: 300
+          length: 120
+          addCloudwatchTimestamp: true
+    - type: elb
+      regions:
+        - eu-west-1
+      length: 120
+      delay: 120
+      searchTags:
+        - key: role
+          value: infrastructure
+      metrics:
+        - name: HealthyHostCount
+          statistics:
+          - Minimum
+          period: 600
+          length: 120 #(this will be ignored)
+  static:
+  - namespace: CWAgent
+    name: labday_mem_used_percent
+    regions:
+      - eu-west-1
+    metrics:
+      - name: mem_used_percent
+        statistics:
+          - Average
+        period: 300
+        length: 600

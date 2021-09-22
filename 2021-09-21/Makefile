@@ -44,6 +44,11 @@ clean:	## remove local state and modules
 	docker-compose down
 	[ "$(ARGC)" -eq 1 ] && rm -f .env || true
 
+yace:
+	docker run -d --rm -v $PWD/credentials:/exporter/.aws/credentials -v $PWD/config.yml:/tmp/config.yml \
+-p 5000:5000 --name yace ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.30.1-alpha
+
+
 .env:
 	@env | grep "AWS_" > .env || true
 	@env | grep "TF_" >> .env || true

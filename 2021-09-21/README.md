@@ -35,7 +35,8 @@ These instructions will get you a copy of the project up and running on your loc
 ## Installing
 
 * Ensure you have `docker` and `docker-compose` available.
-
+* `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and (optionally) `AWS_SESSION_TOKEN` set and exported in your environment
+  ** eg, `export env AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id) AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key) AWS_SESSION_TOKEN=$(aws configure get aws_session_token)`
 # Running the tests
 
 To bring up the cluster:
@@ -72,6 +73,8 @@ This environment is purely intended for local development and testing.
 
 * `/volumes/` contains any persistent files mounted into containers to keep
 * `make shell` will launch a shell connecting to `psql`
+* It's not apparent (or I didn't RTFM properly) but there is a relationship between the `scraping-interval` setting and the `length` option for [Auto-discovery jobs](https://github.com/nerdswords/yet-another-cloudwatch-exporter#auto-discovery-job) ; if `length` of these jobs is greater than `scraping-interval`, then the [former will be preferred](https://github.com/nerdswords/yet-another-cloudwatch-exporter/blob/0958dd880d9fae2f6367fa18382b616eafa38c19/cmd/yace/main.go#L90)
+* Custom metrics (eg, CWAgent) are not supported for auto-discovery ; these can be configured as `static` entries. That said, you _must_ supply all required dimensions when rrequesting these - this is how Cloudwatch works - same for API as for Console. This means hard-coding in things like `InstanceID` values which isn't ideal, but you could solve this by rendering a `config.yml` file from a dynamic source. [There is an open issue](https://github.com/nerdswords/yet-another-cloudwatch-exporter/issues/325) to look at adding discovery functionality for custom metrics.
 
 # Contributing
 
