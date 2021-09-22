@@ -1,6 +1,6 @@
 # Ingesting Cloudwatch Metrics into Prometheus using YACE
 
-### Target outcomes
+## Target outcomes
 
 * Get Cloudwatch Metrics into Prometheus and ideally alarms into AlertManager.
 * Support Cloudwatch Alarms being routed to Pagerduty alerts via our current use of AlertManager
@@ -17,7 +17,7 @@ Use [YACE](https://github.com/nerdswords/yet-another-cloudwatch-exporter) to ing
 * Apparently more API-efficient than the ‘official' Prometheus exporter for Cloudwatch [https://sysdig.com/blog/improving-prometheus-cloudwatch-exporter/](https://sysdig.com/blog/improving-prometheus-cloudwatch-exporter/)
 
 
- ### What
+### What
 
 * Spin up local Dockerised Prom & Alert Manager environment
 * Spin up YACE alongside
@@ -37,7 +37,8 @@ These instructions will get you a copy of the project up and running on your loc
 * Ensure you have `docker` and `docker-compose` available.
 * `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and (optionally) `AWS_SESSION_TOKEN` set and exported in your environment
   ** eg, `export env AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id) AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key) AWS_SESSION_TOKEN=$(aws configure get aws_session_token)`
-# Running the tests
+
+## Running the tests
 
 To bring up the cluster:
 ```
