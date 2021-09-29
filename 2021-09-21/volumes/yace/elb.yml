@@ -1,0 +1,20 @@
+apiVersion: v1alpha1
+discovery:
+  exportedTagsOnMetrics:
+    ec2:
+      - service
+  jobs:
+    - type: elb
+      regions:
+        - eu-west-1
+      length: 120
+      delay: 120
+      searchTags:
+        - key: role
+          value: infrastructure
+      metrics:
+        - name: HealthyHostCount
+          statistics:
+          - Minimum
+          period: 600
+          length: 120 #(this will be ignored)

@@ -33,7 +33,8 @@ services:
   yace:
     image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.30.1-alpha
     volumes:
-      - ${PWD}/volumes/yace/config.yml:/tmp/config.yml
+      #      - ${PWD}/volumes/yace/config.yml:/tmp/config.yml
+      - ${PWD}/volumes/yace/elb.yml:/tmp/config.yml
     command: ["--config.file=/tmp/config.yml", "--scraping-interval=60", "--decoupled-scraping=true", "--debug=true"]
     env_file: .env
     ports:
